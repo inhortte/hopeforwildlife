@@ -1,0 +1,152 @@
+$fontFamily: Verdana
+$fontSize: 14px
+$bodyBackgroundColor: #fff
+$mainBackgroundColor: #798436
+$menuBorderColor: #ccc
+$textColor: #000
+$menuTextColor: #000
+$footerFontColor: #444
+$footerFontSize: 90%
+
+body
+  :background
+    :color $bodyBackgroundColor
+  :font
+    :family $fontFamily
+    :size $fontSize
+  :color $textColor
+
+#menu
+  :background
+    :color $mainBackgroundColor
+
+#header
+  #home_animals
+    :float left
+    :margin 0px
+    :pading 0px
+    
+    #because
+      :margin
+        :top -1%
+        :right 15%
+
+  #home_banner
+    :float right
+    :text-align center
+
+    h1
+      :margin 0px
+      :padding 0px
+      :font
+        :size 170%
+    p
+      :margin 0px
+      :padding 0px
+      :font
+        :size 120%
+        :style italic
+
+#footer
+  :background
+    :color $mainBackgroundColor
+  :padding 5px 10px 5px 10px
+  :font
+    :color $footerFontColor
+    :size $footerFontSize
+
+  #blurb
+    :float left
+    :margin
+      :top 1%
+    
+  #follow_us
+    :float right
+
+    img
+      :vertical-align middle
+      :padding
+        :left 5px
+
+.align_right
+  :text-align right
+
+.clear
+  :clear both
+
+// Drop down menu
+
+#dropdown
+  :width 100%
+
+  ul
+    :list-style none
+    :margin 0
+    :padding 0
+
+  a, h2
+    :font
+      :family $fontFamily
+    :display block
+    :border
+      :width 0px
+      :style solid
+      :color $menuBorderColor
+    :margin 0
+    :padding 2px 3px
+
+  h2
+    :color $menuTextColor
+    :background
+      :color $mainBackgroundColor
+    :text-transform uppercase
+    :font
+      :size 100%
+    
+  a
+    :color $menuTextColor
+    :background $mainBackgroundColor
+    :text-decoration none
+    :padding 5px 10px 5px 10px
+    
+    &:hover
+      :color #a00
+      :background
+        :color #fff
+
+  li.inline
+    :float left
+
+  li
+    :position relative
+
+  ul
+    ul
+      :padding 5px
+      :background
+        :color $mainBackgroundColor
+      :position absolute
+        :bottom 100%
+        :left 0
+        :width 100%
+      :display none
+      ul
+        :position absolute
+        :top 0
+        :left 100%
+        :width 100%
+
+    li:hover
+      ul
+        :display block
+        ul
+          :display none
+
+      li:hover
+        ul
+          :display block
+      
+.round
+  -moz-border-radius: 10px
+  -webkit-border-radius: 10px
+  :border-radius 10px

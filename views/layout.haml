@@ -1,0 +1,31 @@
+!!! XML
+!!!
+%html
+  %head
+    %meta{:name => "description", :content => "Official website! The Hope For Wildlife Society, located in Seaforth, Nova Scotia, was founded in 1997. Our facility is fully licensed and inspected."}
+    %meta{:name => "keywords", :content => "animal,rescue,rehabilitate,wildlife,hope,nova scotia"}
+
+    %title
+      Hope For Wildlife
+
+    %link{:rel => "stylesheet", :href => "/blueprint/screen.css", :type => "text/css", :media => "screen, projection"}
+    /[if IE]
+      %link{:rel => "stylesheet", :href => "/blueprint/ie.css", :type => "text/css", :media => "screen, projection"}
+    %link{:rel => "stylesheet", :href => "/blueprint/plugins/fancy-type/screen.css", :type => "text/css", :media => "screen, projection"}
+    %link{:rel => "stylesheet", :href => "/hfw.css", :type => "text/css", :media => "screen, projection"}
+
+  %body
+    .container
+      #menu.span-24.last
+        = haml_partial "_menu"
+      %br.clear
+
+      #header.span-24.last
+        = haml_partial "headers/_home"
+      %br.clear
+
+      #content.span-24.last
+        = yield
+
+      #footer.span-24.last
+        = haml_partial "_footer"
