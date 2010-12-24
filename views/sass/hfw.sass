@@ -8,6 +8,7 @@ $textColor: #000
 $menuTextColor: #000
 $footerFontColor: #444
 $footerFontSize: 90%
+$buttonBackgroundColor: #798a69
 
 body
   :background
@@ -83,6 +84,30 @@ body
 #content
   :margin 20px
   :padding 0
+
+  a
+    :text-decoration none
+
+  #buttons
+    :margin
+      :right 10%
+      :left 10%
+
+    #left
+      :float left
+
+    #right
+      :float right
+
+    a
+      :display block
+      :padding 3px 0px 3px 10px
+      :margin
+        :bottom 10px
+      :width 80%
+      :color $textColor
+      :background
+        :color $buttonBackgroundColor
 
 #footer
   :background

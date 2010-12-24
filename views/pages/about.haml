@@ -14,3 +14,14 @@
 %p
   To learn more about the Hope for Wildlife Society, please choose a link:
 
+- if @submenus
+  #buttons
+    - one, two = (@submenus.size == 1 ? [@submenus,[]] : [@submenus[0..(@submenus.size / 2)], @submenus[(@submenus.size / 2 + 1)..-1]])
+    #left.span-9
+      - one.each do |submenu|
+        %a.round{:href => "/pages/#{@page}/#{submenu}"}
+          = format_menu_name submenu
+    #right.span-9
+      - two.each do |submenu|
+        %a.round{:href => "/pages/#{@page}/#{submenu}"}
+          = format_menu_name submenu

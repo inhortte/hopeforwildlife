@@ -51,15 +51,18 @@ end
 
 get '/pages/:which' do
   @page = params[:which]
+  @submenus = immediate_submenus(@menus, @page)
   haml :"pages/#{@page}"
 end
 
 get '/pages/:first/:second' do
   @page = params[:second]
+  @submenus = immediate_submenus(@menus, @page)
   haml :"pages/#{params[:first]}/#{@page}"
 end
 
 get '/pages/:first/:second/:third' do
   @page = params[:third]
+  @submenus = immediate_submenus(@menus, @page)
   haml :"pages/#{params[:first]}/#{params[:second]}/#{@page}"
 end

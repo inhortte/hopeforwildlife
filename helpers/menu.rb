@@ -1,7 +1,8 @@
 module Sinatra
   module MenuHelper
     def get_menus(dir, order = nil)
-      Dir.entries(dir).map do |f|
+      entries = Dir.entries(dir) rescue []
+      entries.map do |f|
         m = /^(.+)\.haml/.match(f)
         if m
           menu = m[1]
@@ -12,6 +13,19 @@ module Sinatra
           end
         end
       end.select { |m| m }
+    end
+
+    def immediate_submenus(menus, page)
+      submenus = []
+      menus.each do |sm|
+        if get_menu_name(sm) == page && (sm.is_a? Hash)
+          submenus = sm[page].map do |ssm|
+            get_menu_name ssm
+          end
+          break
+        end
+      end
+      submenus
     end
 
     def sort_menus(menus)
