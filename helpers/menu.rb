@@ -18,11 +18,17 @@ module Sinatra
     def immediate_submenus(menus, page)
       submenus = []
       menus.each do |sm|
-        if get_menu_name(sm) == page && (sm.is_a? Hash)
-          submenus = sm[page].map do |ssm|
-            get_menu_name ssm
+        if sm.is_a? Hash
+          if get_menu_name(sm) == page
+            submenus = sm[page].map do |ssm|
+              get_menu_name ssm
+            end
+            break
+          else
+            search_submenu = immediate_submenus(sm[sm.keys[0]], page)
+            submenus = search_submenu if !search_submenu.blank?
+            break
           end
-          break
         end
       end
       submenus

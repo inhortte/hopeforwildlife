@@ -1,2 +1,17 @@
-%p
-  Our facility
+%span.span-10
+
+  %p
+    The Hope For Wildlife Society is located at 5909 Highway 207 in
+    Seaforth, Nova Scotia. We are about 20 minutes outside of Dartmouth
+    on the Eastern Shore.
+
+  %p
+    As the demands for our services grow, we continue to improve and
+    expand our facilities to meet that need. To learn more about the
+    facilities at the Hope for Wildlife Society, please choose a link:
+
+  = haml_partial "partials/_submenus", :locals => { :page => 'about/our_facility', :submenus => @submenus, :columns => 1 }
+
+%span.span-13.last
+  %img{:src => "/images/map.png", :class => "float_right"}
+
