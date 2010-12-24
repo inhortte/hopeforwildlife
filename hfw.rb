@@ -32,6 +32,9 @@ end
 before do
   if request.path =~ %r{^/pages}
     @menus = get_menus(File.join(root, "views/pages"))
+    if request.path !~ %r{^/pages/home$}
+      @photos = get_random_photos 3
+    end
   end
 end
 
@@ -47,5 +50,6 @@ get '/' do
 end
 
 get '/pages/:which' do
-  haml :"pages/#{params[:which]}"
+  @page = params[:which]
+  haml :"pages/#{@page}"
 end

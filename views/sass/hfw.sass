@@ -2,6 +2,7 @@ $fontFamily: Verdana
 $fontSize: 14px
 $bodyBackgroundColor: #fff
 $mainBackgroundColor: #798436
+$lightBackgroundColor: #a1a972
 $menuBorderColor: #ccc
 $textColor: #000
 $menuTextColor: #000
@@ -22,6 +23,9 @@ body
     :color $mainBackgroundColor
 
 #header
+  :margin 0
+  :padding 0
+
   #home_animals
     :float left
     :margin 0px
@@ -48,10 +52,41 @@ body
         :size 120%
         :style italic
 
+  #page_title
+    :float left
+    :width 20%
+    :text-align center
+    :line-height 170px
+    :font
+      :size 150%
+    
+    span
+      :position absolute
+      :text-align center
+      :margin
+        :left 5%
+        :right 5%
+        :top 180%
+
+  #photos
+    :background
+      :color $mainBackgroundColor
+    :margin
+      :right 2%
+      :left 2%
+      :bottom 0
+
+    img
+      :height 100%
+      :float right
+
+#content
+  :margin 20px
+  :padding 0
+
 #footer
   :background
     :color $mainBackgroundColor
-  :padding 5px 10px 5px 10px
   :font
     :color $footerFontColor
     :size $footerFontSize
@@ -60,9 +95,12 @@ body
     :float left
     :margin
       :top 1%
-    
+    :padding 5px 0px 5px 10px
+
+  
   #follow_us
     :float right
+    :padding 5px 0px 5px 10px
 
     img
       :vertical-align middle
@@ -131,7 +169,6 @@ body
       :position absolute
         :bottom 100%
         :left 0
-        :width 100%
       :display none
       ul
         :position absolute
@@ -139,19 +176,32 @@ body
         :left 100%
         :width 100%
         :margin
-          :left 10px
+          :left 0px
 
     li:hover
       ul
         :display block
+        :width 250%
         ul
           :display none
 
       li:hover
         ul
           :display block
-      
+          :width 150%
+
+.container
+  :border 1px solid #000
+
 .round
   -moz-border-radius: 10px
   -webkit-border-radius: 10px
   :border-radius 10px
+
+.main_bg_color
+  :background
+    :color $mainBackgroundColor
+
+.light_bg_color
+  :background
+    :color $lightBackgroundColor

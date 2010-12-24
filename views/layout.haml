@@ -20,8 +20,8 @@
         = haml_partial "_menu"
       %br.clear
 
-      #header.span-24.last
-        = haml_partial "headers/_home"
+      #header.span-24{:class => "#{@photos ? 'light_bg_color' : ''} last"}
+        = haml_partial (@photos ? "headers/_otro" : "headers/_home")
       %br.clear
 
       #content.span-24.last

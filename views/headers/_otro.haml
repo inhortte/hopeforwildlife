@@ -1,0 +1,7 @@
+#page_title
+  = format_menu_name @page
+
+#photos
+- @photos.each do |photo|
+  %img{:src => "/images/animals/#{photo}", :width => 250}
+
