@@ -11,7 +11,6 @@
     %link{:rel => "stylesheet", :href => "/blueprint/screen.css", :type => "text/css", :media => "screen, projection"}
     /[if IE]
       %link{:rel => "stylesheet", :href => "/blueprint/ie.css", :type => "text/css", :media => "screen, projection"}
-    %link{:rel => "stylesheet", :href => "/blueprint/plugins/fancy-type/screen.css", :type => "text/css", :media => "screen, projection"}
     %link{:rel => "stylesheet", :href => "/hfw.css", :type => "text/css", :media => "screen, projection"}
 
   %body
@@ -20,11 +19,11 @@
         = haml_partial "_menu"
       %br.clear
 
-      #header.span-24{:class => "#{@photos ? 'light_bg_color' : ''} last"}
+      #header.span-24.bottom{:class => "#{@photos ? 'light_bg_color' : ''} last"}
         = haml_partial (@photos ? "headers/_otro" : "headers/_home")
       %br.clear
 
-      #content.span-24.last
+      #content.span-24.top.last
         = yield
 
       #footer.span-24.last
