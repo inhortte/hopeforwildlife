@@ -29,6 +29,12 @@ Dir.entries('./helpers').each do |helper|
   end
 end
 
+before do
+  if request.path =~ %r{^/pages}
+    @menus = get_menus(File.join(root, "views/pages"))
+  end
+end
+
 # The routes!
 
 get '/hfw.css' do
