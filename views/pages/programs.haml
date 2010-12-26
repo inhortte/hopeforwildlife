@@ -1,2 +1,12 @@
+%p 
+  Education plays a big part in helping the Hope for Wildlife Society
+  fulfill our Mission. That’s why we offer several
+  educational programs for both kids and adults.
+
 %p
-  Programs
+  In addition to our education programs, simply volunteering or working
+  at the Hope for Wildlife Society is a learning
+  experience in itself.
+  Explore the links below to learn more about our programs:
+
+= haml_partial "partials/_submenus", :locals => { :page => 'programs', :submenus => @submenus, :columns => 2, :column_headers => { "Educational Programs:" => /^[bdw]/i, "Learning Experiences:" => /^[vis]/i } }

@@ -1,17 +1,24 @@
 - if !submenus.blank?
   #buttons
-    - one, two = (submenus.size == 1 ? [submenus,[]] : [submenus[0..(submenus.size / 2)], submenus[(submenus.size / 2 + 1)..-1]])
+    - cols = organize_columns submenus, column_headers
     - if columns == 1
       #left.span-9
-        - (one + two).each do |submenu|
+        - cols.values.flatten.each do |submenu|
           %a.round{:href => "/pages/#{page}/#{submenu}"}
             = format_menu_name submenu
     - else
+      - c_keys = cols.keys
       #left.span-9
-        - one.each do |submenu|
+        - if c_keys[0].is_a? String
+          .column_header
+            = c_keys[0]
+        - cols[c_keys[0]].each do |submenu|
           %a.round{:href => "/pages/#{page}/#{submenu}"}
             = format_menu_name submenu
       #right.span-9
-        - two.each do |submenu|
+        - if c_keys[1].is_a? String
+          .column_header
+            = c_keys[1]
+        - cols[c_keys[1]].each do |submenu|
           %a.round{:href => "/pages/#{page}/#{submenu}"}
             = format_menu_name submenu

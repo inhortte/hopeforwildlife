@@ -26,12 +26,34 @@ module Sinatra
             break
           else
             search_submenu = immediate_submenus(sm[sm.keys[0]], page)
-            submenus = search_submenu if !search_submenu.blank?
-            break
+            unless search_submenu.blank?
+              submenus = search_submenu
+              break
+            end
           end
         end
       end
       submenus
+    end
+
+    # This is a bit arbitrary. I am asuming there will never be
+    # more than 2 columns, though I may be deadly wrong at some
+    # point in my irascable future. We shall see.
+    # And, oouh, baby, this is hackish.
+    def organize_columns(submenus, column_headers = nil)
+      if column_headers
+        ch_keys = column_headers.keys
+        one = submenus.select do |submenu|
+          column_headers[ch_keys[0]].match(submenu)
+        end
+        two = submenus.select do |submenu|
+          column_headers[ch_keys[1]].match(submenu)
+        end
+      else
+        ch_keys = [ 1, 2 ]
+        one, two = (submenus.size == 1 ? [submenus,[]] : [submenus[0..(submenus.size / 2)], submenus[(submenus.size / 2 + 1)..-1]])
+      end
+      { ch_keys[0] => one, ch_keys[1] => two }
     end
 
     def sort_menus(menus)
