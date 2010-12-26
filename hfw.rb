@@ -30,10 +30,10 @@ Dir.entries('./helpers').each do |helper|
 end
 
 before do
-  if request.path =~ %r{^/pages}
+  if request.path =~ %r{/pages}
     @menus = get_menus(File.join(root, "views/pages"))
-    if request.path !~ %r{^/pages/home$}
-      @photos = get_random_photos 3
+    if request.path !~ %r{/pages/home$}
+      @photos = get_random_photos 3, File.basename(request.path)
     end
   end
 end

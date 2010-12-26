@@ -1,5 +1,6 @@
-$fontFamily: Verdana
+$fontFamily: Arial
 $fontSize: 14px
+$textLineHeight: 16px
 $bodyBackgroundColor: #fff
 $mainBackgroundColor: #798436
 $lightBackgroundColor: #a1a972
@@ -17,6 +18,7 @@ body
     :family $fontFamily
     :size $fontSize
   :color $textColor
+  :line-height $textLineHeight
 
 #menu
   :width 100%
@@ -53,23 +55,28 @@ body
         :size 120%
         :style italic
 
+  #spacer
+    :float left
+    :width 20%
+
   #page_title
     :float left
     :width 20%
     :text-align center
-    :line-height 170px
-    :font
-      :size 150%
+    :line-height 190px
     
     span
       :position absolute
       :text-align center
+      :font
+        :size 150%
+      :line-height 20px
       :margin
         :left 5%
         :right 5%
-        :top 180%
 
   #photos
+    :float right
     :background
       :color $mainBackgroundColor
     :margin
@@ -88,6 +95,20 @@ body
   a
     :text-decoration none
 
+  p
+    :margin 10px 10px 20px 10px
+    
+    .icon_and_blurb
+      img
+        :vertical-align middle
+
+  ol
+    :margin 10px
+
+    li
+      :margin
+        :bottom 10px
+  
   #home_left
     :margin 0
     :background
@@ -130,7 +151,7 @@ body
   #blurb
     :float left
     :margin
-      :top 1%
+      :top 1.45%
     :padding 5px 0px 5px 10px
 
   
@@ -193,6 +214,7 @@ body
 
   li.inline
     :float left
+    :z-index 100
 
   li
     :position relative
@@ -244,3 +266,10 @@ body
 
 .float_right
   :float right
+
+.small
+  :line-height 110%
+
+br.wide
+  :padding
+    :bottom 20px

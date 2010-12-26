@@ -3,7 +3,7 @@ module Sinatra
     def get_menus(dir, order = nil)
       entries = Dir.entries(dir) rescue []
       entries.map do |f|
-        m = /^(.+)\.haml/.match(f)
+        m = /^(.+)\.haml$/.match(f)
         if m
           menu = m[1]
           if File.directory? File.join(dir, menu)
