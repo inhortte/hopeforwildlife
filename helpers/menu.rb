@@ -65,7 +65,13 @@ module Sinatra
     end
 
     def format_menu_name(m)
-      m.gsub(/_/, " ").split(/ /).map { |w| w.capitalize }.join(' ')
+      m.split(/_/).map do |w|
+        if w.all? { |c| c == c.downcase }
+          w.capitalize
+        else
+          w
+        end
+      end.join(' ')
     end
 
     def get_menu_name(m)

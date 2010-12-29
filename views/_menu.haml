@@ -3,17 +3,17 @@
     - sort_menus(@menus).each do |menu|
       %li.inline
         %h2
-          %a{:href => "/pages/#{get_menu_name menu}"}
+          %a.round{:href => "/pages/#{get_menu_name menu}"}
             = format_menu_name (get_menu_name menu)
         - if menu.is_a? Hash
           %ul.round
             - sort_menus(menu[menu.keys[0]]).each do |submenu|
               %li
-                %a{:href => "/pages/#{get_menu_name menu}/#{get_menu_name submenu}"}
+                %a.round{:href => "/pages/#{get_menu_name menu}/#{get_menu_name submenu}"}
                   = format_menu_name (get_menu_name submenu)
                 - if submenu.is_a? Hash
                   %ul.round
                     - sort_menus(submenu[submenu.keys[0]]).each do |subsubmenu|
                       %li
-                        %a{:href => "/pages/#{get_menu_name menu}/#{get_menu_name submenu}/#{get_menu_name subsubmenu}"}
+                        %a.round{:href => "/pages/#{get_menu_name menu}/#{get_menu_name submenu}/#{get_menu_name subsubmenu}"}
                           = format_menu_name (get_menu_name subsubmenu)
