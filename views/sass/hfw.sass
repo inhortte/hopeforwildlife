@@ -10,6 +10,7 @@ $menuTextColor: #000
 $footerFontColor: #444
 $footerFontSize: 90%
 $buttonBackgroundColor: #798a69
+$greyboxBackgroundColor: #ccc
 
 body
   :background
@@ -94,12 +95,33 @@ body
   :margin 0
   :padding 0
 
+  h2
+    :font
+      :size 300%
+      :style italic
+    :text-transform uppercase
+    :text-align center
+
+  h3
+    :text-transform uppercase
+    :text-align center
+
   a
     :text-decoration none
 
+  .img_container
+    :margin
+      :left 26%
+      :right 20%
+      
+    img
+      :width 250px
+      :margin
+        :left 20%
+        :right 20%
   p
     :margin 10px 10px 20px 10px
-    
+
     .icon_and_blurb
       img
         :vertical-align middle
@@ -171,6 +193,17 @@ body
 
 .clear
   :clear both
+
+.greybox
+  :background
+    :color $greyboxBackgroundColor
+  :border 1px solid #000
+  :margin
+    :left 20%
+    :right 20%
+
+.center
+  :text-align center
 
 // Drop down menu
 
