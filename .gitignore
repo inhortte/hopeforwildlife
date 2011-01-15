@@ -3,6 +3,7 @@ db/*.sqlite3
 log/*.log
 *.log
 tmp/**/*
+public/articles/*
 public/mock/*
 public/images/*
 *~
