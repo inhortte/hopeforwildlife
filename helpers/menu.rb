@@ -1,9 +1,24 @@
+require 'yaml'
+
 module Sinatra
   module MenuHelper
     def get_menus(dir, order = nil)
+      entries = YAML::load(File.open(File.join(dir, 'order.yml'))) rescue []
+      entries.map do |menu|
+        if File.directory? File.join(dir, menu)
+          { menu => get_menus(File.join(dir, menu)) }
+        else
+          menu
+        end
+      end
+    end
+
+=begin
+Here's the old version.
+    def get_menus(dir, order = nil)
       entries = Dir.entries(dir) rescue []
       entries.map do |f|
-        m = /^(.+)\.haml$/.match(f)
+        m = /^\d?\d?_?(.+)\.haml$/.match(f)
         if m
           menu = m[1]
           if File.directory? File.join(dir, menu)
@@ -14,6 +29,7 @@ module Sinatra
         end
       end.select { |m| m }
     end
+=end
 
     def immediate_submenus(menus, page)
       submenus = []
@@ -57,11 +73,12 @@ module Sinatra
     end
 
     def sort_menus(menus)
-      menus.sort do |a, b|
-        a = a.keys[0] if a.is_a? Hash
-        b = b.keys[0] if b.is_a? Hash
-        a <=> b
-      end
+      menus
+#      menus.sort do |a, b|
+#        a = a.keys[0] if a.is_a? Hash
+#        b = b.keys[0] if b.is_a? Hash
+#        a <=> b
+#      end
     end
 
     def format_menu_name(m)
@@ -76,6 +93,22 @@ module Sinatra
 
     def get_menu_name(m)
       (m.is_a? Hash) ? m.keys[0] : m
+    end
+
+    def spelling_anomaly?(menu)
+      anomaly? menu, { 'dos_and_donts' => "Dos And Don'ts" }
+    end
+
+    def path_anomaly?(menu)
+      anomaly? menu, { 'volunteer' => '/pages/programs/volunteer' }
+    end
+
+    def anomaly?(menu, anomalies)
+      if anomalies.keys.include? menu
+        anomalies[menu]
+      else
+        nil
+      end
     end
   end
 

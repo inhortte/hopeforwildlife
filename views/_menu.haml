@@ -1,17 +1,18 @@
 #dropdown
   %ul
     - sort_menus(@menus).each do |menu|
+      - menu_name = get_menu_name menu
       %li.inline
         %h2
           %a.round{:href => "/pages/#{get_menu_name menu}"}
             = format_menu_name (get_menu_name menu)
-        - if menu.is_a? Hash
+        - if (menu.is_a? Hash) && !menu.values[0].empty?
           %ul.round
             - sort_menus(menu[menu.keys[0]]).each do |submenu|
               %li
                 %a.round{:href => "/pages/#{get_menu_name menu}/#{get_menu_name submenu}"}
                   = format_menu_name (get_menu_name submenu)
-                - if submenu.is_a? Hash
+                - if (submenu.is_a? Hash) && !submenu.values[0].empty?
                   %ul.round
                     - sort_menus(submenu[submenu.keys[0]]).each do |subsubmenu|
                       %li

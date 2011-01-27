@@ -1,4 +1,4 @@
-$fontFamily: Arial
+$fontFamily: Cambria
 $fontSize: 14px
 $textLineHeight: 18px
 $bodyBackgroundColor: #fff
@@ -11,6 +11,7 @@ $footerFontColor: #444
 $footerFontSize: 90%
 $buttonBackgroundColor: #798a69
 $greyboxBackgroundColor: #ccc
+$menuHoverColor: #a1a972
 
 body
   :background
@@ -152,9 +153,10 @@ body
   #home_left
     :margin 0
     :background
-      :color $mainBackgroundColor
+      :color $menuHoverColor
 
   #home_img
+
 
   #buttons
     :margin
@@ -260,7 +262,7 @@ body
     
     &:hover
       :background
-        :color #0f0
+        :color $menuHoverColor
 
   li.inline
     :float left
