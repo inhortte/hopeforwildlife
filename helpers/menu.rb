@@ -91,6 +91,10 @@ Here's the old version.
       end.join(' ')
     end
 
+    def format_menu_name_for_title(m)
+      format_menu_name(m).gsub(' ', '<br />')
+    end
+
     def get_menu_name(m)
       (m.is_a? Hash) ? m.keys[0] : m
     end

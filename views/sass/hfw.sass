@@ -3,6 +3,7 @@ $fontSize: 14px
 $textLineHeight: 18px
 $bodyBackgroundColor: #fff
 $mainBackgroundColor: #798436
+$inbetweenBackgroundColor: #8d9654
 $lightBackgroundColor: #a1a972
 $menuBorderColor: #ccc
 $textColor: #000
@@ -151,12 +152,19 @@ body
         :bottom 10px
   
   #home_left
-    :margin 0
+    :float left
+    :margin 5px
     :background
       :color $menuHoverColor
 
   #home_img
-
+    :float left
+    :position relative
+    :background
+      :image url("/images/home2.jpg")
+    
+    img
+      :width 540
 
   #buttons
     :margin
@@ -275,11 +283,16 @@ body
     ul
       :padding 5px
       :background
-        :color $mainBackgroundColor
+        :color $inbetweenBackgroundColor
       :position absolute
         :bottom 100%
         :left 0
       :display none
+
+      a
+        :background
+          :color $inbetweenBackgroundColor
+
       ul
         :position absolute
         :top 0
@@ -325,3 +338,9 @@ body
 br.wide
   :padding
     :bottom 20px
+
+br.homeleft
+  :height 100px
+  :margin
+    :top 100px
+    :bottom 100px

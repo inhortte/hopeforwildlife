@@ -12,6 +12,8 @@
     /[if IE]
       %link{:rel => "stylesheet", :href => "/blueprint/ie.css", :type => "text/css", :media => "screen, projection"}
     %link{:rel => "stylesheet", :href => "/hfw.css", :type => "text/css", :media => "screen, projection"}
+    %script{:type => "text/javascript", :src => "/javascript/jquery.js"}
+    %script{:type => "text/javascript", :src => "/javascript/hfw.js"}
 
   %body
     .container
@@ -25,6 +27,7 @@
 
       #content.span-24.top.last{:class => "#{@photos ? '' : 'light_bg_color'}"}
         = yield
+      %br.clear
 
       #footer.span-24.last
         = haml_partial "_footer"
