@@ -35,10 +35,16 @@ $(document).ready(function() {
 //	    setTimeout($('#home2').fadeOut('slow'), 10000);
 	});
     }
-    $("#home_img").find(':first-child').mouseenter(function() {
+    /*
+    $("#home_img img").mouseenter(function() {
 	$.changeHomePhoto(this);
     });
-    $("#home_img").find(':first-child').mouseout(function() {
+    $("#home_img img").mouseout(function() {
 	$.changeHomePhoto(this);
     });
+    */
+    var timer = setInterval(function () {
+	var home_img = $("#home_img img");
+	$.changeHomePhoto(home_img);
+    }, 5000);
 });
