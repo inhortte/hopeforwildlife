@@ -67,7 +67,7 @@ Here's the old version.
         end
       else
         ch_keys = [ 1, 2 ]
-        one, two = (submenus.size == 1 ? [submenus,[]] : [submenus[0..(submenus.size / 2)], submenus[(submenus.size / 2 + 1)..-1]])
+        one, two = (submenus.size == 1 ? [submenus,[]] : [submenus[0..(submenus.size / 2 - 1 + submenus.size % 2)], submenus[(submenus.size / 2 + submenus.size % 2)..-1]])
       end
       { ch_keys[0] => one, ch_keys[1] => two }
     end
