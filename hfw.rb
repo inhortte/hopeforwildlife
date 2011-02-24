@@ -35,6 +35,9 @@ before do
     if request.path !~ %r{/pages/home$}
       @photos = get_random_photos 3, File.basename(request.path)
     end
+    if request.path =~ %r{newsletter}
+      @newsletters = get_newsletters
+    end
   end
 end
 

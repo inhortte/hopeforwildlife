@@ -1,0 +1,10 @@
+- keys = @newsletters.keys.sort.reverse
+- keys.each do |key|
+  %p
+    %strong= key
+    &nbsp; &nbsp;
+    - @newsletters[key].each_index do |i|
+      %a{:href => "/articles/#{@newsletters[key][i]}", :target => "_blank"}
+        page
+        = (i + 1).to_s
+        &nbsp; &nbsp;
