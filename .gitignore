@@ -4,6 +4,7 @@ log/*.log
 *.log
 tmp/**/*
 public/articles/*
+public/volunteer/*
 public/mock/*
 public/images/*
 *~
