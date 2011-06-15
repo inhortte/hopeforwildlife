@@ -1,4 +1,4 @@
-var home_images = ['home2.jpg','home3.jpg','home4.jpg','home5.jpg'];
+var home_images = ['home2.jpg','home4.jpg','home5.jpg'];
 
 (function($) {
     var cache = [];
@@ -17,7 +17,7 @@ var home_images = ['home2.jpg','home3.jpg','home4.jpg','home5.jpg'];
     }
 
     $.changeHomePhoto = function(me) {
-	$(me).attr('src', '/images/' + home_images[Math.floor(Math.random()*4)]);
+	$(me).attr('src', '/images/' + home_images[Math.floor(Math.random()*3)]);
     }
 })(jQuery)
 
@@ -25,7 +25,6 @@ $(document).ready(function() {
     var pathname = window.location.pathname;
     if(pathname.substr(-4) == 'home') {
 	jQuery.preLoadImages("/images/home2.jpg",
-			     "/images/home3.jpg",
 			     "/images/home4.jpg",
 			     "/images/home5.jpg");
 	$(window).bind('load', function() {
