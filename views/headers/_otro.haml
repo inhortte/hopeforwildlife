@@ -1,5 +1,8 @@
 #page_title
-  = format_menu_name @page
+  - if File.exist? "public/images/headers/#{@page}.jpg"
+    %img{:src => "/images/headers/#{@page}.jpg"}
+  - else
+    = format_menu_name @page
 
 #photos
 - @photos.each do |photo|
