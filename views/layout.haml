@@ -26,6 +26,9 @@
       %br.clear
 
       #content.span-24.top.last{:class => "#{@photos ? '' : 'light_bg_color'}"}
+        - if flash[:notice]
+          %p.error
+            = flash[:notice]
         = yield
       %br.clear
 

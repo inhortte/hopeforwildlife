@@ -3,7 +3,7 @@ require 'rubygems'
 Dir.entries('./helpers').each do |helper|
   require File.join('./helpers', helper) if helper =~ /.rb$/
 end
-# %w(user.rb entry.rb).each { |model| require "server_models/lib/#{model}" }
+%w(user.rb edit.rb).each { |model| require "models/#{model}" }
 
 require 'sinatra/reloader' if development?
 
@@ -20,7 +20,7 @@ configure do
   LOGGER = Logger.new("hfw.log")
 end
 
-# DataMapper.setup(:default, 'mysql://localhost/hfw')
+DataMapper.setup(:default, 'mysql://localhost/hfw')
 
 Dir.entries('./helpers').each do |helper|
   m = /^(.+)\.rb$/.match(helper)
@@ -30,8 +30,8 @@ Dir.entries('./helpers').each do |helper|
 end
 
 before do
+  @menus = get_menus(File.join(root, "views/pages"))
   if request.path =~ %r{/pages}
-    @menus = get_menus(File.join(root, "views/pages"))
     if request.path !~ %r{/pages/home$}
       @photos = get_random_photos 3, File.basename(request.path)
     end
@@ -52,6 +52,26 @@ get '/' do
   redirect '/pages/home'
 end
 
+get '/login' do
+  haml :login
+end
+
+post '/login' do
+  logger.info params[:username] + "   " + params[:password]
+  user = authenticate(params[:username], params[:password])
+  if user
+    session[:id] = user.id
+    redirect '/'
+  else
+    redirect_with_message '/login', 'Your attempt at login failed, Herr Steinmarder.'
+  end
+end
+
+get '/logout' do
+  session.clear
+  redirect '/'
+end
+
 get '/pages/:which' do
   @page = params[:which]
   @submenus = immediate_submenus(@menus, @page)
@@ -68,4 +88,26 @@ get '/pages/:first/:second/:third' do
   @page = params[:third]
   @submenus = immediate_submenus(@menus, @page)
   haml :"pages/#{params[:first]}/#{params[:second]}/#{@page}"
+end
+
+# Editable ajax.
+get '/fetch_editable/:id' do
+  text = Edit.get(params[:id]).text
+  haml :"partials/_editable_textarea", :locals => { :edit_id => params[:id], :text => text }, :layout => false
+end
+
+post '/save_editable/:id' do
+  Edit.get(params[:id]).update({:text => params[:text],
+                                 :druh => params[:druh]})
+  redirect Edit.get(params[:id]).edit_map.page
+end
+
+get '/revert_editable/:id' do
+  haml :"partials/_editable_static", :locals => { :edit_id => params[:id] }, :layout => false
+end
+
+helpers do
+  def logger
+    LOGGER
+  end
 end

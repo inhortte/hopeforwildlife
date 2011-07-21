@@ -1,0 +1,19 @@
+%form{:action => "/save_editable/#{edit_id}", :method => :post}
+  - e = Edit.get(edit_id)
+  %textarea{:id => 'text', :name => 'text', :style => "width: 80%;"}= text
+  %br
+  %select{:id => 'druh', :name => 'druh'}
+    - if e.druh == 'HTML'
+      %option{:value => 'HTML'} HTML
+      %option{:value => 'Bluecloth'} Bluecloth
+    - else
+      %option{:value => 'Bluecloth'} Bluecloth
+      %option{:value => 'HTML'} HTML
+  %br
+  %input{:type => "submit", :value => "submit"}
+  %br
+  %a{:href => "#", :id => "revert#{edit_id}"}
+    revert
+
+%script
+  ajax_hovno();

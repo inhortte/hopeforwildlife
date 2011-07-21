@@ -22,3 +22,7 @@
                       %li
                         %a.round{:href => "/pages/#{get_menu_name menu}/#{get_menu_name submenu}/#{get_menu_name subsubmenu}"}
                           = format_menu_name (get_menu_name subsubmenu)
+    - if get_user
+      %li#logout
+        %a{:href => '/logout'}
+          logout

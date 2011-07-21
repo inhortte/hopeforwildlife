@@ -1,0 +1,9 @@
+- e = Edit.get(edit_id)
+= (e.druh == 'HTML') ? e.text : (from_blue_cloth e.text)
+- if get_user
+  %div.editable
+    %a{:href => "#", :id => "edit#{edit_id}"}
+      edit
+
+%script
+  ajax_hovno();

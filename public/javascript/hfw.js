@@ -1,5 +1,35 @@
 var home_images = ['home2.jpg','home4.jpg','home5.jpg'];
 
+function ajax_hovno() {
+    // All that is editable.
+    $('a[id^="edit"]').click(function() {
+	var edit_id = this.id.substr(4);
+	var div_id = "editable" + edit_id;
+	var path = "/fetch_editable/" + edit_id;
+	$.ajax({
+	    url: path,
+	    cache: false,
+	    success: function(html) {
+		$("#" + div_id).html(html);
+	    }
+	});
+	return false;
+    });
+    $('a[id^="revert"]').click(function() {
+	var edit_id = this.id.substr(6);
+	var div_id = "editable" + edit_id
+	var path = "/revert_editable/" + edit_id;
+	$.ajax({
+	    url: path,
+	    cache: false,
+	    success: function(html) {
+		$("#" + div_id).html(html);
+	    }
+	});
+	return false;
+    });
+}
+
 (function($) {
     var cache = [];
   // Arguments are image paths relative to the current page.
@@ -46,4 +76,6 @@ $(document).ready(function() {
 	var home_img = $("#home_img img");
 	$.changeHomePhoto(home_img);
     }, 5000);
+
+    ajax_hovno();
 });
