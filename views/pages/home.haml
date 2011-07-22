@@ -23,4 +23,8 @@
 
 
 #home_img.span-13
-  %img{:src => '/images/home2.jpg', :id => 'home2', :width => 550}
+  - user_agent = request.env['HTTP_USER_AGENT'].downcase
+  - if user_agent =~ /msie/i
+    %img{:src => '/images/home2.png', :id => 'home2', :width => 550}
+  - else
+    %img{:src => '/images/home2.jpg', :id => 'home2', :width => 550}

@@ -1,6 +1,10 @@
 %div.twocolumn
   %div.first_col
-    %img{:src => '/images/book500.jpg', :width => 400}
+    - user_agent = request.env['HTTP_USER_AGENT'].downcase
+    - if user_agent =~ /msie/i
+      %img{:src => '/images/book500.png', :width => 400}
+    - else
+      %img{:src => '/images/book500.jpg', :width => 400}
 
   %div.second_col
     %h5

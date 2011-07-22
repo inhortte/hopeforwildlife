@@ -54,28 +54,21 @@ function ajax_hovno() {
 $(document).ready(function() {
     var pathname = window.location.pathname;
     if(pathname.substr(-4) == 'home') {
-	jQuery.preLoadImages("/images/home2.jpg",
-			     "/images/home4.jpg",
-			     "/images/home5.jpg");
-	$(window).bind('load', function() {
-//	    setTimeout($('#home5').fadeOut('slow'), 10000);
-//	    setTimeout($('#home4').fadeOut('slow'), 10000);
-//	    setTimeout($('#home3').fadeOut('slow'), 10000);
-//	    setTimeout($('#home2').fadeOut('slow'), 10000);
-	});
+	if(!$.browser.msie) {
+	    jQuery.preLoadImages("/images/home2.jpg",
+				 "/images/home4.jpg",
+				 "/images/home5.jpg");
+	}
     }
-    /*
-    $("#home_img img").mouseenter(function() {
-	$.changeHomePhoto(this);
-    });
-    $("#home_img img").mouseout(function() {
-	$.changeHomePhoto(this);
-    });
-    */
-    var timer = setInterval(function () {
-	var home_img = $("#home_img img");
-	$.changeHomePhoto(home_img);
-    }, 5000);
+
+    if(!$.browser.msie) {
+	var timer = setInterval(function () {
+	    var home_img = $("#home_img img");
+	    $.changeHomePhoto(home_img);
+	}, 5000);
+    } else {
+
+    }
 
     ajax_hovno();
 });
